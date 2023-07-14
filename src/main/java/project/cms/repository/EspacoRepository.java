@@ -1,6 +1,6 @@
-package repository;
+package project.cms.repository;
 
-import entity.Espaco;
+import project.cms.entity.Espaco;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
-package repository;
+package project.cms.repository;
 
-import entity.Edicao;
+import project.cms.entity.Edicao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

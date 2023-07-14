@@ -1,6 +1,6 @@
-package repository;
+package project.cms.repository;
 
-import entity.Atividade;
+import project.cms.entity.Atividade;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

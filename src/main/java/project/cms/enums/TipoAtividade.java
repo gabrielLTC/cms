@@ -1,4 +1,4 @@
-package enums;
+package project.cms.enums;
 
 public enum TipoAtividade {
     PALESTRA,
