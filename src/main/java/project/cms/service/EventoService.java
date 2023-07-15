@@ -28,28 +28,27 @@ public class EventoService {
 
   public EventoResponse buscaEventoEdicao(String eventoNome, String edicaoAno) {
     Evento evento =
-        eventoRepository
-            .findEventoByNome(eventoNome)
-            .orElseThrow(() -> new EventNotFoundException("Evento não encotrado."));
+            eventoRepository
+                    .findEventoByNome(eventoNome)
+                    .orElseThrow(() -> new EventNotFoundException("Evento não encotrado."));
 
     EventoResponse eventoResponse = null;
     List<Edicao> edicaoList = evento.getEdicao();
     for (Edicao edicao : edicaoList) {
       if (edicao.getAno().equals(Integer.parseInt(edicaoAno))) {
         eventoResponse =
-            new EventoResponse(
-                evento.getNome(),
-                evento.getSigla(),
-                evento.getDescricao(),
-                edicao.getNumero(),
-                edicao.getAno(),
-                edicao.getDataInicial(),
-                edicao.getDataFinal(),
-                edicao.getCidade());
-      } else {
-        throw new EditionNotFoundException("Edição não encontrada.");
+                new EventoResponse(
+                        evento.getNome(),
+                        evento.getSigla(),
+                        evento.getDescricao(),
+                        edicao.getNumero(),
+                        edicao.getAno(),
+                        edicao.getDataInicial(),
+                        edicao.getDataFinal(),
+                        edicao.getCidade());
+        return eventoResponse;
       }
     }
-    return eventoResponse;
+    throw new EditionNotFoundException("Edição não encontrada.");
   }
 }

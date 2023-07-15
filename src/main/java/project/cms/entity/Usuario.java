@@ -14,10 +14,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import project.cms.enums.TipoDeUsuario;
 
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -27,6 +30,7 @@ public class Usuario {
   Long id;
 
   String login;
+  String senha;
   String email;
   String nome;
   String afiliacao;

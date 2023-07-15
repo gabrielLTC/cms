@@ -30,14 +30,13 @@ public class InitializeData {
     @Autowired
     AtividadeRepository atividadeRepository;
 
-    @Autowired
-
 
     @PostConstruct
     public void initializeData() {
         //insere os usuarios no banco de dados
         Usuario usuario1 = new Usuario();
         usuario1.setLogin("pedro022");
+        usuario1.setSenha("1111");
         usuario1.setEmail("pedro@gmail.com");
         usuario1.setNome("Pedro Carvalho");
         usuario1.setAfiliacao("Afiliação 1");
@@ -46,6 +45,7 @@ public class InitializeData {
 
         Usuario usuario2 = new Usuario();
         usuario2.setLogin("gabriel022");
+        usuario2.setSenha("2222");
         usuario2.setEmail("gabriel022@gmail.com");
         usuario2.setNome("Gabriel Lannes");
         usuario2.setAfiliacao("Afiliação 2");
@@ -54,6 +54,7 @@ public class InitializeData {
 
         Usuario usuario3 = new Usuario();
         usuario3.setLogin("joao044");
+        usuario3.setSenha("3333");
         usuario3.setEmail("joao.boladao@gmail.com");
         usuario3.setNome("João Francisco");
         usuario3.setAfiliacao("Afiliação 3");
@@ -62,6 +63,7 @@ public class InitializeData {
 
         Usuario usuario4 = new Usuario();
         usuario4.setLogin("ronaldo69");
+        usuario4.setSenha("4444");
         usuario4.setEmail("ronaldo69@gmail.com");
         usuario4.setNome("Ronaldo Xavier");
         usuario4.setAfiliacao("Afiliação 4");
@@ -71,7 +73,7 @@ public class InitializeData {
         //insere evento, com edição passada e edição atual
         List<Edicao> edicaoList = new ArrayList<>();
         Evento evento = new Evento();
-        evento.setNome("Bianal do livro");
+        evento.setNome("bianaldolivro");
         evento.setSigla("BL");
         evento.setDescricao("Maior evento da Ameríca Latina para todos aqueles que são fãs da leitura, que acontece a cada 2 anos.");
         evento.setEdicao(edicaoList);
@@ -95,7 +97,9 @@ public class InitializeData {
         evento.getEdicao().add(edicaoAtual);
         eventoRepository.save(evento);
         edicaoPassada.setUsuario(usuario1);
-        edicaoPassada.setUsuario(usuario2);
+        edicaoAtual.setUsuario(usuario2);
+        edicaoPassada.setEvento(evento);
+        edicaoAtual.setEvento(evento);
         eventoRepository.save(evento);
 
         //criadas 2 atividades com seus respectivos espaços

@@ -18,6 +18,7 @@ import project.cms.service.UsuarioService;
 public class UsuarioController {
   @Autowired @NonNull UsuarioService usuarioService;
 
+  //Se cadastrar no sistema
   @PostMapping(
       consumes = MediaType.APPLICATION_JSON_VALUE,
       produces = MediaType.APPLICATION_JSON_VALUE)
