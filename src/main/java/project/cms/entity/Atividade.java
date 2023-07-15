@@ -1,33 +1,40 @@
 package project.cms.entity;
 
-import project.cms.enums.TipoAtividade;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import javax.persistence.OneToOne;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import project.cms.enums.TipoAtividade;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
 public class Atividade {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    String nome;
-    TipoAtividade tipo;
-    String descricao;
-    LocalDate data;
-    LocalDateTime horarioInicial;
-    LocalDateTime horarioFinal;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  Long id;
 
-    @ManyToOne
-    Edicao edicao;
+  String nome;
+  @Enumerated(EnumType.ORDINAL)
+  TipoAtividade tipo;
+  String descricao;
+  LocalDate data;
+  LocalDateTime horarioInicial;
+  LocalDateTime horarioFinal;
+
+  @ManyToOne(cascade = CascadeType.PERSIST) Edicao edicao;
+
+  @OneToOne(cascade = CascadeType.PERSIST) Espaco espaco;
 }

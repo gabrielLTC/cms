@@ -1,2 +1,3 @@
-package project.cms.service;public class EdicaoService {
-}
+package project.cms.service;
+
+public class EdicaoService {}

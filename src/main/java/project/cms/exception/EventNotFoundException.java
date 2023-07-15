@@ -1,2 +1,8 @@
-package project.cms.exception;public class EventNotFoundException {
+package project.cms.exception;
+
+public class EventNotFoundException extends RuntimeException {
+
+  public EventNotFoundException(String message) {
+    super(message);
+  }
 }

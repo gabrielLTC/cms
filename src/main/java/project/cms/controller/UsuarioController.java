@@ -16,14 +16,15 @@ import project.cms.service.UsuarioService;
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
-    @Autowired
-    @NonNull UsuarioService usuarioService;
+  @Autowired @NonNull UsuarioService usuarioService;
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Usuario> cadastrarUsuario(@RequestBody UsuarioRequest usuarioRequest) {
+  @PostMapping(
+      consumes = MediaType.APPLICATION_JSON_VALUE,
+      produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<Usuario> cadastrarUsuario(@RequestBody UsuarioRequest usuarioRequest) {
 
-        Usuario usuario = usuarioService.cadastraUsuario(usuarioRequest);
+    Usuario usuario = usuarioService.cadastraUsuario(usuarioRequest);
 
-        return new ResponseEntity<>(usuario, HttpStatus.CREATED);
-    }
+    return new ResponseEntity<>(usuario, HttpStatus.CREATED);
+  }
 }
