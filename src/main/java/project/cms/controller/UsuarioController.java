@@ -1,6 +1,7 @@
 package project.cms.controller;
 
 import lombok.NonNull;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -14,25 +15,14 @@ import project.cms.service.UsuarioService;
 
 @RestController
 @RequestMapping("/usuario")
-
 public class UsuarioController {
+    @Autowired
     @NonNull UsuarioService usuarioService;
 
-    @PostMapping(
-            consumes = MediaType.APPLICATION_JSON_VALUE,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Usuario> postNewCustomer(
-            @RequestBody UsuarioRequest usuarioRequest) {
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Usuario> cadastrarUsuario(@RequestBody UsuarioRequest usuarioRequest) {
 
-        usuarioService.checaSeLoginJaExiste(usuarioRequest);
-
-        Usuario usuario = new Usuario();
-        usuario.setLogin(usuarioRequest.getLogin());
-        usuario.setEmail(usuarioRequest.getEmail());
-        usuario.setNome(usuarioRequest.getNome());
-        usuario.setAfiliacao(usuarioRequest.getAfiliacao());
-
-
+        Usuario usuario = usuarioService.cadastraUsuario(usuarioRequest);
 
         return new ResponseEntity<>(usuario, HttpStatus.CREATED);
     }

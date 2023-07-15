@@ -29,6 +29,7 @@ public class UsuarioService {
     }
 
     public Boolean checaSeLoginJaExiste(UsuarioRequest usuarioRequest){
+        //busca usuario no banco de dados.
         Optional<Usuario> usuario = usuarioRepository.findUsuarioByLogin(usuarioRequest.getLogin());
         //checa se login ja existe no banco de dados.
         return usuario.isEmpty();
