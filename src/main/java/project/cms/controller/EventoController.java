@@ -18,11 +18,11 @@ public class EventoController {
 
   @Autowired @NonNull EventoService eventoService;
 
-  //Visualizar página do evento
+  // Visualizar página do evento
   @GetMapping(value = "/{eventoNome}/{edicaoAno}", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<EventoResponse> eventoInfo(
       @PathVariable String eventoNome, @PathVariable String edicaoAno) {
-    EventoResponse eventoResponse = eventoService.buscaEventoEdicao(eventoNome, edicaoAno);
+    EventoResponse eventoResponse = eventoService.montaResponseEventoEdicao(eventoNome, edicaoAno);
     return new ResponseEntity<>(eventoResponse, HttpStatus.OK);
   }
 }

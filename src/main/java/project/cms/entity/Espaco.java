@@ -1,20 +1,16 @@
 package project.cms.entity;
 
-import javax.persistence.CascadeType;
+import java.util.List;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.util.List;
 
 @Getter
 @Setter
@@ -30,8 +26,7 @@ public class Espaco {
   String localizacao;
   Integer capacidade;
 
-  @ElementCollection
-  List<String> recursos;
+  @ElementCollection List<String> recursos;
 
-  @OneToOne(cascade = CascadeType.PERSIST) Atividade atividade;
+  @OneToOne Atividade atividade;
 }

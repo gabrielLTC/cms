@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -37,8 +36,7 @@ public class Edicao {
   @JoinColumn(name = "evento_id")
   Evento evento;
 
-  @OneToOne
-  Usuario usuario;
+  @OneToOne Usuario usuario;
 
   @OneToMany(mappedBy = "edicao", cascade = CascadeType.PERSIST)
   List<Atividade> atividades;

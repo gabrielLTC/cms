@@ -11,13 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
-
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.stereotype.Service;
 import project.cms.enums.TipoAtividade;
 
 @Getter
@@ -31,14 +28,18 @@ public class Atividade {
   Long id;
 
   String nome;
+
   @Enumerated(EnumType.ORDINAL)
   TipoAtividade tipo;
+
   String descricao;
   LocalDate data;
   LocalDateTime horarioInicial;
   LocalDateTime horarioFinal;
 
-  @ManyToOne(cascade = CascadeType.PERSIST) Edicao edicao;
+  @ManyToOne(cascade = CascadeType.PERSIST)
+  Edicao edicao;
 
-  @OneToOne(cascade = CascadeType.PERSIST) Espaco espaco;
+  @OneToOne(cascade = CascadeType.PERSIST)
+  Espaco espaco;
 }

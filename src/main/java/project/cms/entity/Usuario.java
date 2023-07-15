@@ -9,11 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -34,10 +32,12 @@ public class Usuario {
   String email;
   String nome;
   String afiliacao;
+
   @Enumerated(EnumType.ORDINAL)
   TipoDeUsuario tipo;
 
-  @OneToOne(cascade = CascadeType.PERSIST) Edicao edicao;
+  @OneToOne(cascade = CascadeType.PERSIST)
+  Edicao edicao;
 
   @OneToMany
   @JoinColumn(name = "usuario_id")
