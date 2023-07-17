@@ -8,11 +8,7 @@ import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import project.cms.entity.Atividade;
-import project.cms.entity.Edicao;
-import project.cms.entity.Espaco;
-import project.cms.entity.Evento;
-import project.cms.entity.Usuario;
+import project.cms.entity.*;
 import project.cms.enums.TipoAtividade;
 import project.cms.enums.TipoDeUsuario;
 import project.cms.repository.AtividadeRepository;
@@ -81,8 +77,8 @@ public class InitializeData {
     Edicao edicaoPassada = new Edicao();
     edicaoPassada.setNumero(1);
     edicaoPassada.setAno(2021);
-    edicaoPassada.setDataInicial(LocalDate.of(2022, 9, 14));
-    edicaoPassada.setDataFinal(LocalDate.of(2022, 9, 21));
+    edicaoPassada.setDataInicial(LocalDate.of(2021, 9, 14));
+    edicaoPassada.setDataFinal(LocalDate.of(2021, 9, 21));
     edicaoPassada.setCidade("Rio de Janeiro");
 
     Edicao edicaoAtual = new Edicao();

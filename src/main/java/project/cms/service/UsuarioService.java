@@ -64,9 +64,12 @@ public class UsuarioService {
   }
 
   public UsuarioResponse montaUsuarioResponse(Usuario usuario) {
-    if (usuario.getFavoritos().isEmpty()) {
-      usuario.setFavoritos(null);
+    if (!(usuario.getFavoritos() == null)) {
+      if (usuario.getFavoritos().isEmpty()) {
+        usuario.setFavoritos(null);
+      }
     }
+
     return new UsuarioResponse(
         usuario.getLogin(),
         usuario.getEmail(),
