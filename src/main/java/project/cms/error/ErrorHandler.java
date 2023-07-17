@@ -3,6 +3,7 @@ package project.cms.error;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import project.cms.exception.ActivityNotFoundException;
 import project.cms.exception.EditionNotFoundException;
@@ -21,6 +22,7 @@ public class ErrorHandler {
     ActivityNotFoundException.class,
     FavoritAlreadyExistException.class
   })
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
   public ResponseEntity<ExceptionMessage> handleBadRequestException(Exception exception) {
     ExceptionMessage exceptionMessage = new ExceptionMessage("ERROR_409", exception.getMessage());
     return new ResponseEntity<>(exceptionMessage, HttpStatus.BAD_REQUEST);

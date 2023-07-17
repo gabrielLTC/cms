@@ -1,13 +1,11 @@
 package project.cms.config;
 
-import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import project.cms.entity.Atividade;
@@ -17,7 +15,6 @@ import project.cms.entity.Evento;
 import project.cms.entity.Usuario;
 import project.cms.enums.TipoAtividade;
 import project.cms.enums.TipoDeUsuario;
-import project.cms.exception.UserRegistrationException;
 import project.cms.repository.AtividadeRepository;
 import project.cms.repository.EspacoRepository;
 import project.cms.repository.EventoRepository;
@@ -30,8 +27,7 @@ public class InitializeData {
   @Autowired EventoRepository eventoRepository;
 
   @Autowired AtividadeRepository atividadeRepository;
-  @Autowired
-  EspacoRepository espacoRepository;
+  @Autowired EspacoRepository espacoRepository;
 
   @PostConstruct
   @Transactional
@@ -79,7 +75,7 @@ public class InitializeData {
     evento.setNome("bianaldolivro");
     evento.setSigla("BL");
     evento.setDescricao(
-            "Maior evento da Ameríca Latina para todos aqueles que são fãs da leitura, que acontece a cada 2 anos.");
+        "Maior evento da Ameríca Latina para todos aqueles que são fãs da leitura, que acontece a cada 2 anos.");
     evento.setEdicao(edicaoList);
 
     Edicao edicaoPassada = new Edicao();

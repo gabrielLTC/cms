@@ -7,7 +7,6 @@ import lombok.Data;
 import org.springframework.stereotype.Service;
 import project.cms.dto.UsuarioRequest;
 import project.cms.dto.UsuarioResponse;
-import project.cms.entity.Atividade;
 import project.cms.entity.Usuario;
 import project.cms.exception.FavoritAlreadyExistException;
 import project.cms.exception.UserRegistrationException;
@@ -32,12 +31,16 @@ public class UsuarioService {
     }
   }
 
-  public UsuarioResponse adicionaFavoritos(UsuarioRequest usuarioRequest){
-    Usuario usuario = usuarioRepository.findUsuarioByLogin(usuarioRequest.getLogin()).orElseThrow(() -> new UserRegistrationException("Usuario não encontrado"));
+  public UsuarioResponse adicionaFavoritos(UsuarioRequest usuarioRequest) {
+    Usuario usuario =
+        usuarioRepository
+            .findUsuarioByLogin(usuarioRequest.getLogin())
+            .orElseThrow(() -> new UserRegistrationException("Usuario não encontrado"));
 
-    List<String> usuarioListaFavoritos =  usuario.getFavoritos() ;
+    List<String> usuarioListaFavoritos = usuario.getFavoritos();
     List<String> usuarioRequestListaFavoritos = usuarioRequest.getFavoritos();
-    List<String> listaFinal = adicionaCasoNaoExista(usuarioListaFavoritos, usuarioRequestListaFavoritos);
+    List<String> listaFinal =
+        adicionaCasoNaoExista(usuarioListaFavoritos, usuarioRequestListaFavoritos);
 
     usuario.setFavoritos(listaFinal);
     usuarioRepository.save(usuario);
@@ -61,15 +64,19 @@ public class UsuarioService {
   }
 
   public UsuarioResponse montaUsuarioResponse(Usuario usuario) {
+    if (usuario.getFavoritos().isEmpty()) {
+      usuario.setFavoritos(null);
+    }
     return new UsuarioResponse(
-            usuario.getLogin(),
-            usuario.getEmail(),
-            usuario.getNome(),
-            usuario.getAfiliacao(),
-            usuario.getFavoritos());
+        usuario.getLogin(),
+        usuario.getEmail(),
+        usuario.getNome(),
+        usuario.getAfiliacao(),
+        usuario.getFavoritos());
   }
 
-  public List<String> adicionaCasoNaoExista(List<String> usuarioLista, List<String> usuarioRequestList){
+  public List<String> adicionaCasoNaoExista(
+      List<String> usuarioLista, List<String> usuarioRequestList) {
     for (String atividade : usuarioRequestList) {
       String nome = atividade;
       boolean existe = false;
@@ -77,8 +84,8 @@ public class UsuarioService {
       for (String atividadeExistente : usuarioLista) {
         if (atividadeExistente.equals(nome)) {
           existe = true;
-          //break;
-          throw  new FavoritAlreadyExistException("Essa atividade já foi favoritada.");
+          // break;
+          throw new FavoritAlreadyExistException("Essa atividade já foi favoritada.");
         }
       }
       if (!existe) {

@@ -13,13 +13,11 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import project.cms.enums.TipoAtividade;
 
-//@Getter
-//@Setter
+// @Getter
+// @Setter
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
